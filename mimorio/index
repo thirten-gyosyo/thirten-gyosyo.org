@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MimoRio サポート</title>
+    <style>
+        :root {
+            --primary-color: #4A90A4;
+            --secondary-color: #7BC47F;
+            --text-color: #333;
+            --bg-color: #FAFAFA;
+            --card-bg: #FFFFFF;
+            --border-color: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 16px 20px;
+            background: var(--bg-color);
+            border: none;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+
+        .faq-question:hover {
+            background-color: #F0F0F0;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 16px 20px;
+            color: #555;
+        }
+
+        /* 使い方 */
+        .usage-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .usage-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-right: 16px;
+        }
+
+        .step-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .step-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* お問い合わせ */
+        .contact-box {
+            background: linear-gradient(135deg, #F8F9FA, #E9ECEF);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            margin-bottom: 16px;
+            color: #555;
+        }
+
+        .contact-email {
+            display: inline-block;
+            padding: 12px 32px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 144, 164, 0.4);
+        }
+
+        .contact-note {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            .section {
+                padding: 20px 16px;
+            }
+
+            .faq-question {
+                padding: 14px 16px;
+                font-size: 0.95rem;
+            }
+
+            .step-number {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MimoRio サポート</h1>
+        <p>毎日を記録する、あなたのパートナー</p>
+    </header>
+
+    <div class="container">
+        <!-- 使い方 -->
+        <section class="section">
+            <h2>基本的な使い方</h2>
+
+            <div class="usage-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>タグで記録する</h3>
+                    <p>画面を上にスワイプすると記録画面が開きます。タグをタップして、その日の出来事を簡単に記録しましょう。写真も追加できます。</p>
+                </div>
+            </div>
+
+            <div class="usage-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>日記を作る</h3>
+                    <p>記録したタグから、AIが自動で日記を生成します。文体も選べます。もちろん、手書きで日記を書くこともできます。</p>
+                </div>
+            </div>
+
+            <div class="usage-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>カレンダーで振り返る</h3>
+                    <p>カレンダー上で過去の記録を確認できます。ドットの色は記録の数を表しています。左右にスワイプで月を切り替えられます。</p>
+                </div>
+            </div>
+
+            <div class="usage-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>きっかけを設定する</h3>
+                    <p>未来の日付をタップして「きっかけ」を登録すると、その日に通知で記録を促してくれます。大切な予定を忘れずに記録できます。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <h2>よくある質問（FAQ）</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">データは別のデバイスと同期できますか？</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        はい、iCloud経由で自動的に同期されます。同じApple IDでサインインしている別のiPhone・iPadでも、同じ記録を閲覧・編集できます。設定でiCloudが有効になっていることをご確認ください。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">タグの数に上限はありますか？</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        はい、タグには種類ごとに登録上限があります。使わなくなったタグは「アーカイブ」することで、上限を気にせず新しいタグを作成できます。アーカイブしたタグは設定画面から復元できます。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">AI日記の生成にはインターネット接続が必要ですか？</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        iOS 26以降のデバイスでは、Apple Intelligenceを利用してオフラインでも日記を生成できます。それ以外の環境では、オンラインでのAI生成が必要になる場合があります。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">記録を削除するにはどうすればいいですか？</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        記録カードを左にスワイプするか、詳細画面から削除できます。削除した記録はiCloud同期により、すべてのデバイスから削除されます。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">クイックログとは何ですか？</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        よく使う記録の組み合わせを保存しておき、ワンタップで登録できる機能です。毎日のルーティンを素早く記録するのに便利です。⚡マークのボタンから設定・使用できます。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">テーマや色を変更できますか？</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        はい、設定画面からテーマカラーやフォントを変更できます。自分好みにカスタマイズして、毎日の記録を楽しくしましょう。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">データベースの初期化エラーが出ます</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        以下をお試しください：<br>
+                        ・アプリを完全に終了して再起動する<br>
+                        ・デバイスを再起動する<br>
+                        ・iCloudにサインインしているか確認する<br>
+                        ・デバイスのストレージ空き容量を確認する<br>
+                        <br>
+                        改善しない場合は、下記のお問い合わせフォームよりご連絡ください。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- お問い合わせ -->
+        <section class="section">
+            <h2>お問い合わせ</h2>
+
+            <div class="contact-box">
+                <p>ご不明な点やご要望がございましたら、<br>お気軽にお問い合わせください。</p>
+                <a href="mailto:13app.info@gmail.com?subject=MimoRio%20%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B" class="contact-email">
+                    メールで問い合わせる
+                </a>
+                <p class="contact-note">
+                    ※ 通常2〜3営業日以内に返信いたします。<br>
+                    ※ お問い合わせの際は、ご利用のデバイス名・iOSバージョンをお知らせください。
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 MimoRio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // FAQ アコーディオン
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // 他のすべてのFAQを閉じる
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+
+                // クリックしたものを開く/閉じる
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
