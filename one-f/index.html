@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-F - Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .lang-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .lang-selector select {
+            padding: 8px 16px;
+            font-size: 14px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            background: white;
+            color: #667eea;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #667eea;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+        p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .faq-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .faq-q {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        .faq-a {
+            color: #555;
+            line-height: 1.6;
+        }
+        .contact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact-box a {
+            color: white;
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #888;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lang-selector">
+            <select id="langSelect" onchange="changeLanguage(this.value)">
+                <option value="ja">日本語</option>
+                <option value="en">English</option>
+                <option value="zh-Hans">简体中文</option>
+                <option value="zh-Hant">繁體中文</option>
+                <option value="ko">한국어</option>
+                <option value="pt">Português</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="fr">Français</option>
+                <option value="it">Italiano</option>
+            </select>
+        </div>
+
+        <h1>One-F</h1>
+        <p class="subtitle" id="subtitle">サポートページ</p>
+
+        <h2 id="howToPlayTitle">遊び方</h2>
+        <p id="howToPlayDesc">1, 2, 4, 8のボタンを組み合わせて、2秒以内に目標の数字を作るゲームです。全10問でスコアを競います。</p>
+
+        <h2 id="faqTitle">よくある質問</h2>
+
+        <div class="faq-item">
+            <p class="faq-q" id="faq1q">Q: スタミナはどうやって回復しますか？</p>
+            <p class="faq-a" id="faq1a">A: スタミナは約4分ごとに1回復します（最大16）。また、動画広告を視聴すると即座に4回復できます。</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q" id="faq2q">Q: 購入を復元するには？</p>
+            <p class="faq-a" id="faq2a">A: アプリ内のストア画面で「購入を復元」ボタンをタップしてください。同じApple IDでサインインしている必要があります。</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q" id="faq3q">Q: アプリが正常に動作しません</p>
+            <p class="faq-a" id="faq3a">A: アプリを完全に終了してから再起動してください。それでも解決しない場合は、アプリを削除して再インストールしてください。</p>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-q" id="faq4q">Q: スクリーンショットが保存できません</p>
+            <p class="faq-a" id="faq4a">A: 設定アプリ → One-F → 写真 から写真へのアクセスが許可されているか確認してください。</p>
+        </div>
+
+        <h2 id="contactTitle">お問い合わせ</h2>
+        <p id="contactDesc">上記で解決しない場合や、その他のご質問・ご要望がございましたら、下記よりお問い合わせください。</p>
+
+        <div class="contact-box">
+            <p>X (Twitter)</p>
+            <p><a href="https://x.com/13app" target="_blank">@13app</a></p>
+        </div>
+
+        <p class="footer">© 2025 One-F</p>
+    </div>
+
+    <script>
+        const translations = {
+            ja: {
+                subtitle: "サポートページ",
+                howToPlayTitle: "遊び方",
+                howToPlayDesc: "1, 2, 4, 8のボタンを組み合わせて、2秒以内に目標の数字を作るゲームです。全10問でスコアを競います。",
+                faqTitle: "よくある質問",
+                faq1q: "Q: スタミナはどうやって回復しますか？",
+                faq1a: "A: スタミナは約4分ごとに1回復します（最大16）。また、動画広告を視聴すると即座に4回復できます。",
+                faq2q: "Q: 購入を復元するには？",
+                faq2a: "A: アプリ内のストア画面で「購入を復元」ボタンをタップしてください。同じApple IDでサインインしている必要があります。",
+                faq3q: "Q: アプリが正常に動作しません",
+                faq3a: "A: アプリを完全に終了してから再起動してください。それでも解決しない場合は、アプリを削除して再インストールしてください。",
+                faq4q: "Q: スクリーンショットが保存できません",
+                faq4a: "A: 設定アプリ → One-F → 写真 から写真へのアクセスが許可されているか確認してください。",
+                contactTitle: "お問い合わせ",
+                contactDesc: "上記で解決しない場合や、その他のご質問・ご要望がございましたら、下記よりお問い合わせください。"
+            },
+            en: {
+                subtitle: "Support Page",
+                howToPlayTitle: "How to Play",
+                howToPlayDesc: "Combine buttons 1, 2, 4, and 8 to reach the target number within 2 seconds. Compete for the highest score across 10 questions.",
+                faqTitle: "FAQ",
+                faq1q: "Q: How does stamina recover?",
+                faq1a: "A: Stamina recovers 1 point every 4 minutes (max 16). You can also instantly recover 4 by watching a video ad.",
+                faq2q: "Q: How do I restore purchases?",
+                faq2a: "A: Tap the \"Restore Purchases\" button in the in-app store. Make sure you're signed in with the same Apple ID.",
+                faq3q: "Q: The app isn't working properly",
+                faq3a: "A: Please completely close and restart the app. If the issue persists, try deleting and reinstalling the app.",
+                faq4q: "Q: I can't save screenshots",
+                faq4a: "A: Please check that photo access is enabled in Settings → One-F → Photos.",
+                contactTitle: "Contact Us",
+                contactDesc: "If you need further assistance or have any questions, please contact us below."
+            },
+            "zh-Hans": {
+                subtitle: "支持页面",
+                howToPlayTitle: "玩法",
+                howToPlayDesc: "组合1、2、4、8按钮，在2秒内达到目标数字。共10题，争取最高分。",
+                faqTitle: "常见问题",
+                faq1q: "Q: 体力如何恢复？",
+                faq1a: "A: 体力每4分钟恢复1点（最大16）。观看视频广告可立即恢复4点。",
+                faq2q: "Q: 如何恢复购买？",
+                faq2a: "A: 在应用内商店点击「恢复购买」按钮。请确保使用相同的Apple ID登录。",
+                faq3q: "Q: 应用无法正常运行",
+                faq3a: "A: 请完全关闭应用后重新启动。如果问题仍然存在，请尝试删除并重新安装应用。",
+                faq4q: "Q: 无法保存截图",
+                faq4a: "A: 请在设置 → One-F → 照片中确认已授权照片访问权限。",
+                contactTitle: "联系我们",
+                contactDesc: "如果您需要进一步的帮助或有任何问题，请通过以下方式联系我们。"
+            },
+            "zh-Hant": {
+                subtitle: "支援頁面",
+                howToPlayTitle: "玩法",
+                howToPlayDesc: "組合1、2、4、8按鈕，在2秒內達到目標數字。共10題，爭取最高分。",
+                faqTitle: "常見問題",
+                faq1q: "Q: 體力如何恢復？",
+                faq1a: "A: 體力每4分鐘恢復1點（最大16）。觀看影片廣告可立即恢復4點。",
+                faq2q: "Q: 如何恢復購買？",
+                faq2a: "A: 在應用程式內商店點擊「恢復購買」按鈕。請確保使用相同的Apple ID登入。",
+                faq3q: "Q: 應用程式無法正常運作",
+                faq3a: "A: 請完全關閉應用程式後重新啟動。如果問題仍然存在，請嘗試刪除並重新安裝應用程式。",
+                faq4q: "Q: 無法儲存截圖",
+                faq4a: "A: 請在設定 → One-F → 照片中確認已授權照片存取權限。",
+                contactTitle: "聯絡我們",
+                contactDesc: "如果您需要進一步的協助或有任何問題，請透過以下方式聯絡我們。"
+            },
+            ko: {
+                subtitle: "지원 페이지",
+                howToPlayTitle: "게임 방법",
+                howToPlayDesc: "1, 2, 4, 8 버튼을 조합하여 2초 이내에 목표 숫자를 만드세요. 총 10문제로 점수를 겨룹니다.",
+                faqTitle: "자주 묻는 질문",
+                faq1q: "Q: 스태미나는 어떻게 회복하나요?",
+                faq1a: "A: 스태미나는 약 4분마다 1씩 회복됩니다(최대 16). 동영상 광고를 시청하면 즉시 4를 회복할 수 있습니다.",
+                faq2q: "Q: 구매를 복원하려면?",
+                faq2a: "A: 앱 내 스토어에서 「구매 복원」 버튼을 탭하세요. 동일한 Apple ID로 로그인되어 있어야 합니다.",
+                faq3q: "Q: 앱이 정상적으로 작동하지 않습니다",
+                faq3a: "A: 앱을 완전히 종료한 후 다시 시작하세요. 문제가 지속되면 앱을 삭제하고 다시 설치해 보세요.",
+                faq4q: "Q: 스크린샷을 저장할 수 없습니다",
+                faq4a: "A: 설정 → One-F → 사진에서 사진 접근이 허용되어 있는지 확인하세요.",
+                contactTitle: "문의하기",
+                contactDesc: "추가 도움이 필요하시거나 질문이 있으시면 아래로 문의해 주세요."
+            },
+            pt: {
+                subtitle: "Página de Suporte",
+                howToPlayTitle: "Como Jogar",
+                howToPlayDesc: "Combine os botões 1, 2, 4 e 8 para alcançar o número alvo em 2 segundos. Compita pela maior pontuação em 10 perguntas.",
+                faqTitle: "Perguntas Frequentes",
+                faq1q: "Q: Como a energia se recupera?",
+                faq1a: "A: A energia recupera 1 ponto a cada 4 minutos (máximo 16). Você também pode recuperar 4 instantaneamente assistindo a um anúncio em vídeo.",
+                faq2q: "Q: Como restaurar compras?",
+                faq2a: "A: Toque no botão \"Restaurar Compras\" na loja do aplicativo. Certifique-se de estar conectado com o mesmo Apple ID.",
+                faq3q: "Q: O aplicativo não está funcionando corretamente",
+                faq3a: "A: Por favor, feche completamente e reinicie o aplicativo. Se o problema persistir, tente excluir e reinstalar o aplicativo.",
+                faq4q: "Q: Não consigo salvar capturas de tela",
+                faq4a: "A: Verifique se o acesso às fotos está ativado em Configurações → One-F → Fotos.",
+                contactTitle: "Contato",
+                contactDesc: "Se precisar de mais ajuda ou tiver alguma dúvida, entre em contato conosco abaixo."
+            },
+            es: {
+                subtitle: "Página de Soporte",
+                howToPlayTitle: "Cómo Jugar",
+                howToPlayDesc: "Combina los botones 1, 2, 4 y 8 para alcanzar el número objetivo en 2 segundos. Compite por la puntuación más alta en 10 preguntas.",
+                faqTitle: "Preguntas Frecuentes",
+                faq1q: "Q: ¿Cómo se recupera la energía?",
+                faq1a: "A: La energía se recupera 1 punto cada 4 minutos (máximo 16). También puedes recuperar 4 instantáneamente viendo un anuncio de video.",
+                faq2q: "Q: ¿Cómo restaurar compras?",
+                faq2a: "A: Toca el botón \"Restaurar Compras\" en la tienda de la aplicación. Asegúrate de haber iniciado sesión con el mismo Apple ID.",
+                faq3q: "Q: La aplicación no funciona correctamente",
+                faq3a: "A: Por favor, cierra completamente y reinicia la aplicación. Si el problema persiste, intenta eliminar y reinstalar la aplicación.",
+                faq4q: "Q: No puedo guardar capturas de pantalla",
+                faq4a: "A: Verifica que el acceso a fotos esté habilitado en Configuración → One-F → Fotos.",
+                contactTitle: "Contacto",
+                contactDesc: "Si necesitas más ayuda o tienes alguna pregunta, contáctanos a continuación."
+            },
+            de: {
+                subtitle: "Support-Seite",
+                howToPlayTitle: "Spielanleitung",
+                howToPlayDesc: "Kombiniere die Tasten 1, 2, 4 und 8, um die Zielzahl innerhalb von 2 Sekunden zu erreichen. Kämpfe um die höchste Punktzahl bei 10 Fragen.",
+                faqTitle: "Häufig gestellte Fragen",
+                faq1q: "Q: Wie regeneriert sich die Ausdauer?",
+                faq1a: "A: Die Ausdauer regeneriert alle 4 Minuten 1 Punkt (maximal 16). Du kannst auch sofort 4 regenerieren, indem du eine Videoanzeige anschaust.",
+                faq2q: "Q: Wie stelle ich Käufe wieder her?",
+                faq2a: "A: Tippe auf die Schaltfläche \"Käufe wiederherstellen\" im In-App-Store. Stelle sicher, dass du mit derselben Apple-ID angemeldet bist.",
+                faq3q: "Q: Die App funktioniert nicht richtig",
+                faq3a: "A: Bitte schließe die App vollständig und starte sie neu. Wenn das Problem weiterhin besteht, versuche die App zu löschen und neu zu installieren.",
+                faq4q: "Q: Ich kann keine Screenshots speichern",
+                faq4a: "A: Bitte überprüfe, ob der Fotozugriff in Einstellungen → One-F → Fotos aktiviert ist.",
+                contactTitle: "Kontakt",
+                contactDesc: "Wenn du weitere Hilfe benötigst oder Fragen hast, kontaktiere uns bitte unten."
+            },
+            fr: {
+                subtitle: "Page d'Assistance",
+                howToPlayTitle: "Comment Jouer",
+                howToPlayDesc: "Combinez les boutons 1, 2, 4 et 8 pour atteindre le nombre cible en 2 secondes. Affrontez pour le meilleur score sur 10 questions.",
+                faqTitle: "Questions Fréquentes",
+                faq1q: "Q: Comment l'énergie se régénère-t-elle ?",
+                faq1a: "A: L'énergie se régénère de 1 point toutes les 4 minutes (maximum 16). Vous pouvez également récupérer 4 instantanément en regardant une publicité vidéo.",
+                faq2q: "Q: Comment restaurer les achats ?",
+                faq2a: "A: Appuyez sur le bouton « Restaurer les achats » dans la boutique de l'application. Assurez-vous d'être connecté avec le même Apple ID.",
+                faq3q: "Q: L'application ne fonctionne pas correctement",
+                faq3a: "A: Veuillez fermer complètement et redémarrer l'application. Si le problème persiste, essayez de supprimer et de réinstaller l'application.",
+                faq4q: "Q: Je ne peux pas sauvegarder les captures d'écran",
+                faq4a: "A: Veuillez vérifier que l'accès aux photos est activé dans Réglages → One-F → Photos.",
+                contactTitle: "Nous Contacter",
+                contactDesc: "Si vous avez besoin d'aide supplémentaire ou si vous avez des questions, veuillez nous contacter ci-dessous."
+            },
+            it: {
+                subtitle: "Pagina di Supporto",
+                howToPlayTitle: "Come Giocare",
+                howToPlayDesc: "Combina i pulsanti 1, 2, 4 e 8 per raggiungere il numero target entro 2 secondi. Competi per il punteggio più alto su 10 domande.",
+                faqTitle: "Domande Frequenti",
+                faq1q: "Q: Come si recupera l'energia?",
+                faq1a: "A: L'energia si recupera di 1 punto ogni 4 minuti (massimo 16). Puoi anche recuperare 4 istantaneamente guardando un annuncio video.",
+                faq2q: "Q: Come ripristinare gli acquisti?",
+                faq2a: "A: Tocca il pulsante \"Ripristina Acquisti\" nel negozio dell'app. Assicurati di aver effettuato l'accesso con lo stesso Apple ID.",
+                faq3q: "Q: L'app non funziona correttamente",
+                faq3a: "A: Per favore, chiudi completamente e riavvia l'app. Se il problema persiste, prova a eliminare e reinstallare l'app.",
+                faq4q: "Q: Non riesco a salvare gli screenshot",
+                faq4a: "A: Verifica che l'accesso alle foto sia abilitato in Impostazioni → One-F → Foto.",
+                contactTitle: "Contattaci",
+                contactDesc: "Se hai bisogno di ulteriore assistenza o hai domande, contattaci qui sotto."
+            }
+        };
+
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            document.getElementById('subtitle').textContent = t.subtitle;
+            document.getElementById('howToPlayTitle').textContent = t.howToPlayTitle;
+            document.getElementById('howToPlayDesc').textContent = t.howToPlayDesc;
+            document.getElementById('faqTitle').textContent = t.faqTitle;
+            document.getElementById('faq1q').textContent = t.faq1q;
+            document.getElementById('faq1a').textContent = t.faq1a;
+            document.getElementById('faq2q').textContent = t.faq2q;
+            document.getElementById('faq2a').textContent = t.faq2a;
+            document.getElementById('faq3q').textContent = t.faq3q;
+            document.getElementById('faq3a').textContent = t.faq3a;
+            document.getElementById('faq4q').textContent = t.faq4q;
+            document.getElementById('faq4a').textContent = t.faq4a;
+            document.getElementById('contactTitle').textContent = t.contactTitle;
+            document.getElementById('contactDesc').textContent = t.contactDesc;
+
+            localStorage.setItem('supportLang', lang);
+        }
+
+        // 初期言語設定
+        document.addEventListener('DOMContentLoaded', function() {
+            // 保存された言語、またはブラウザの言語を使用
+            let savedLang = localStorage.getItem('supportLang');
+            if (!savedLang) {
+                const browserLang = navigator.language || navigator.userLanguage;
+                if (browserLang.startsWith('ja')) savedLang = 'ja';
+                else if (browserLang.startsWith('zh-Hans') || browserLang === 'zh-CN') savedLang = 'zh-Hans';
+                else if (browserLang.startsWith('zh-Hant') || browserLang === 'zh-TW' || browserLang === 'zh-HK') savedLang = 'zh-Hant';
+                else if (browserLang.startsWith('ko')) savedLang = 'ko';
+                else if (browserLang.startsWith('pt')) savedLang = 'pt';
+                else if (browserLang.startsWith('es')) savedLang = 'es';
+                else if (browserLang.startsWith('de')) savedLang = 'de';
+                else if (browserLang.startsWith('fr')) savedLang = 'fr';
+                else if (browserLang.startsWith('it')) savedLang = 'it';
+                else savedLang = 'en';
+            }
+
+            document.getElementById('langSelect').value = savedLang;
+            changeLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
